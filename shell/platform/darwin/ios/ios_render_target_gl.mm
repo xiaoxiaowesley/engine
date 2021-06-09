@@ -18,9 +18,6 @@ IOSRenderTargetGL::IOSRenderTargetGL(fml::scoped_nsobject<CAEAGLLayer> layer,
   FML_DCHECK(layer_ != nullptr);
   FML_DCHECK(context_ != nullptr);
 
-  if (@available(iOS 9.0, *)) {
-    [layer_ setPresentsWithTransaction:YES];
-  }
   auto context_switch = GLContextSwitch(std::make_unique<IOSSwitchableGLContext>(context_.get()));
   bool context_current = context_switch.GetResult();
 
